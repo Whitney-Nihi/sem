@@ -10,5 +10,5 @@ Each group will undertake two graded code reviews:
 
 2. Week 13 Code Review 2 (50% of CW mark).
 
-![workflow](https://github.com/Witney-Nihi/sem/actions/workflows/main.yml/badge.svg)
+![workflow](https://github.com/Whitney-Nihi/sem/actions/workflows/main.yml/badge.svg)
 
