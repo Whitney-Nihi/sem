@@ -6,8 +6,8 @@
 ### Course Work Code Review Meeting
 Each group will undertake two graded code reviews:
 
-Week 6 Code Review 1 (50% of CW mark).
+1. Week 6 Code Review 1 (50% of CW mark).
 
-Week 13 Code Review 2 (50% of CW mark).
+2. Week 13 Code Review 2 (50% of CW mark).
 
 
