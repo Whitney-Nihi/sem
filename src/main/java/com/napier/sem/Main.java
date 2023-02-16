@@ -1,7 +1,15 @@
 package com.napier.sem;
 
 public class Main {
-    public static void main(String[] args) {
-        System.out.println("Hello world!");
+    public static void main(String[] args)
+    {
+        // Create new Application
+        App a = new App();
+
+        // Connect to database
+        a.connect();
+
+        // Disconnect from database
+        a.disconnect();
     }
-}
+    }
