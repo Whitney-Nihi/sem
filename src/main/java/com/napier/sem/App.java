@@ -4,10 +4,12 @@ import java.sql.*;
 
 public class App
 {
+
     /**
      * Connection to MySQL database.
      */
     private Connection con = null;
+
 
     /**
      * Connect to the MySQL database.
@@ -50,36 +52,19 @@ public class App
         }
     }
 
-    /**
-     * Disconnect from the MySQL database.
-     */
-    public void disconnect()
-    {
-        if (con != null)
-        {
-            try
-            {
-                // Close connection
-                con.close();
-            }
-            catch (Exception e)
-            {
-                System.out.println("Error closing connection to database");
-            }
-        }
-    }
-
     public Employee getEmployee(int ID)
     {
         try
         {
             // Create an SQL statement
             Statement stmt = con.createStatement();
+
             // Create string for SQL statement
             String strSelect =
                     "SELECT emp_no, first_name, last_name "
                             + "FROM employees "
                             + "WHERE emp_no = " + ID;
+
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Return new employee if valid.
@@ -100,6 +85,40 @@ public class App
             System.out.println(e.getMessage());
             System.out.println("Failed to get employee details");
             return null;
+        }
+    }
+
+    public void displayEmployee(Employee emp, String s)
+    {
+        if (emp != null)
+        {
+            System.out.println(
+                    emp.emp_no + " "
+                            + emp.first_name + " "
+                            + emp.last_name + "\n"
+                            + emp.title + "\n"
+                            + "Salary:" + emp.salary + "\n"
+                            + emp.dept_name + "\n"
+                            + "Manager: " + emp.manager + "\n");
+        }
+    }
+
+    /**
+     * Disconnect from the MySQL database.
+     */
+    public void disconnect()
+    {
+        if (con != null)
+        {
+            try
+            {
+                // Close connection
+                con.close();
+            }
+            catch (Exception e)
+            {
+                System.out.println("Error closing connection to database");
+            }
         }
     }
 }
