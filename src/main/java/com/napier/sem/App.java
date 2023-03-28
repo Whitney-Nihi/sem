@@ -4,7 +4,22 @@ import java.sql.*;
 
 public class App
 {
+    public static void main(String[] args) {
+        // Create new Application
+        App a = new App();
 
+        // Connect to database
+        a.connect();
+
+        // Get Employee
+        Employee emp = a.getEmployee(255530);
+        // Display results
+        a.displayEmployee(emp);
+
+        // Disconnect from database
+        a.disconnect();
+
+    }
     /**
      * Connection to MySQL database.
      */
@@ -88,7 +103,7 @@ public class App
         }
     }
 
-    public void displayEmployee(Employee emp, String s)
+    public void displayEmployee(Employee emp)
     {
         if (emp != null)
         {
