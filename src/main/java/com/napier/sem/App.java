@@ -12,7 +12,7 @@ public class App
         a.connect();
 
         // Get Employee
-        Employee emp = a.getEmployee(255530);
+        Employee emp = a.getSalaries();
         // Display results
         a.displayEmployee(emp);
 
@@ -67,7 +67,7 @@ public class App
         }
     }
 
-    public Employee getEmployee(int ID)
+    public Employee getSalaries()
     {
         try
         {
@@ -76,9 +76,15 @@ public class App
 
             // Create string for SQL statement
             String strSelect =
-                    "SELECT emp_no, first_name, last_name "
-                            + "FROM employees "
-                            + "WHERE emp_no = " + ID;
+                    "SELECT employees.emp_no, employees.first_name, employees.last_name, salaries.salary "
+                            + "FROM employees, salaries, titles "
+                            + "WHERE employees.emp_no = salaries.emp_no "
+                            + "AND employees.emp_no = titles.emp_no "
+                            + "AND salaries.to_date = '9999-01-01' "
+                            + "AND titles.to_date = '9999-01-01' "
+                            + "AND titles.title = 'Senior Engineer' "
+                            + "ORDER BY employees.emp_no ASC ";
+
 
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
@@ -90,6 +96,7 @@ public class App
                 emp.emp_no = rset.getInt("emp_no");
                 emp.first_name = rset.getString("first_name");
                 emp.last_name = rset.getString("last_name");
+                emp.salary = rset.getInt("salary");
                 return emp;
             }
             else
@@ -98,7 +105,7 @@ public class App
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get employee details");
+            System.out.println("Failed to get employee detailss");
             return null;
         }
     }
